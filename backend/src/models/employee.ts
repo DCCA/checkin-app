@@ -1,4 +1,12 @@
-import { Schema } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
+
+interface IEmployee extends Document {
+  name: string;
+  password: string;
+  team: string;
+  allowed: boolean;
+  checkInList: string[];
+}
 
 const employeeSchema = new Schema({
   name: {
@@ -13,16 +21,18 @@ const employeeSchema = new Schema({
     type: String,
     required: true,
   },
-  //   What is the check-in status for that employee
-  checkInStatus: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'CheckIn',
-    },
-  ],
   //   Employee is allowed to work in-company?
   allowed: {
     type: Boolean,
     default: false,
   },
+  //   What is the check-in status for that employee
+  checkInList: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'CheckIn',
+    },
+  ],
 });
+
+export default model<IEmployee>('Employee', employeeSchema);
