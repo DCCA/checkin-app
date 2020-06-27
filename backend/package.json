@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "dev": "ts-node ./src/index.ts",
+    "dev": "nodemon ./src/index.ts",
     "test": "jest --watchAll --no-cache"
   },
   "author": "DCCA",
@@ -17,6 +17,7 @@
     "@types/mongoose": "^5.7.28",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "helmet": "^3.23.3",
     "mongoose": "^5.9.20",
     "ts-node": "^8.10.2",
@@ -27,6 +28,7 @@
     "@types/supertest": "^2.0.9",
     "jest": "^26.1.0",
     "mongodb-memory-server": "^6.6.1",
+    "nodemon": "^2.0.4",
     "supertest": "^4.0.2",
     "ts-jest": "^26.1.1"
   }
