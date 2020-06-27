@@ -14,7 +14,15 @@ const employeeSchema = new Schema({
     required: true,
   },
   //   What is the check-in status for that employee
-  checkInStatus: {},
+  checkInStatus: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'CheckIn',
+    },
+  ],
   //   Employee is allowed to work in-company?
-  allowed: {},
+  allowed: {
+    type: Boolean,
+    default: false,
+  },
 });
