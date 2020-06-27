@@ -8,31 +8,38 @@ interface IEmployee extends Document {
   checkInList: string[];
 }
 
-const employeeSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  team: {
-    type: String,
-    required: true,
-  },
-  //   Employee is allowed to work in-company?
-  allowed: {
-    type: Boolean,
-    default: false,
-  },
-  //   What is the check-in status for that employee
-  checkInList: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'CheckIn',
+const employeeSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-  ],
-});
+    password: {
+      type: String,
+      required: true,
+    },
+    team: {
+      type: String,
+      required: true,
+    },
+    //   Employee is allowed to work in-company?
+    allowed: {
+      type: Boolean,
+      default: false,
+    },
+    //   What is the check-in status for that employee
+    checkInList: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'CheckIn',
+      },
+    ],
+  },
+  {
+    timestamps: {
+      createdAt: 'created_at',
+    },
+  }
+);
 
 export default model<IEmployee>('Employee', employeeSchema);
